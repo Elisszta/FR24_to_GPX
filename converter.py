@@ -20,7 +20,7 @@ def convert(kml_file, gpx_file, interval=0, date=''):
 
     coordinates = []
     timestamps = []
-    flight_data = []
+    # flight_data = []
 
     # Path getter
     for document in root.findall('.//kml:Document', namespace):
@@ -43,13 +43,13 @@ def convert(kml_file, gpx_file, interval=0, date=''):
                                 coordinates.append((lon, lat, alt))
                                 
                         # Get bearing and speed
-                        for description in placemark.findall('.//kml:description', namespace):
-                            speed_match = re.search(r'<span><b>Speed:</b></span> <span>(\d+\.?\d*)\s*(kt|kts)</span>', description.text)
-                            heading_match = re.search(r'<span><b>Heading:</b></span> <span>(\d+\.?\d*)&deg;</span>', description.text)
-                            if speed_match and heading_match:
-                                speed_value, speed_unit = speed_match.groups()
-                                heading_value = heading_match.groups()[0] 
-                            flight_data.append((speed_value, heading_value))
+                        # for description in placemark.findall('.//kml:description', namespace):
+                        #     speed_match = re.search(r'<span><b>Speed:</b></span> <span>(\d+\.?\d*)\s*(kt|kts)</span>', description.text)
+                        #     heading_match = re.search(r'<span><b>Heading:</b></span> <span>(\d+\.?\d*)&deg;</span>', description.text)
+                        #     if speed_match and heading_match:
+                        #         speed_value, speed_unit = speed_match.groups()
+                        #         heading_value = heading_match.groups()[0] 
+                        #     flight_data.append((speed_value, heading_value))
                 else:
                     continue
                     
